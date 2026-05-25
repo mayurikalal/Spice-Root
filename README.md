@@ -68,3 +68,4 @@ Set `CLIENT_ORIGIN` in Render to your Vercel domain:
 ```txt
 https://your-vercel-domain.vercel.app
 ```
+Project updated
