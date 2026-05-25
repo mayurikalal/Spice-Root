@@ -61,6 +61,15 @@ Output Directory: client/dist
 Install Command: npm --prefix client install
 ```
 
+If Vercel's Root Directory is set to `client`, use:
+
+```txt
+Build Command: npm run build
+Output Directory: dist
+```
+
+The repo includes SPA rewrite configs at both `vercel.json` and `client/vercel.json` so direct URLs like `/admin/login`, `/admin/dashboard`, and `/products/...` load the React app instead of returning Vercel 404.
+
 Set these Vercel environment variables:
 
 ```txt

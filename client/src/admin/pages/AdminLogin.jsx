@@ -9,7 +9,14 @@ import "../../styles/auth-pages.css";
 function AdminLogin() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { loading: authLoading, isAdmin, isAuthenticated, loginAdmin, resetPassword } = useAuth();
+  const {
+    currentUser,
+    loading: authLoading,
+    isAdmin,
+    isAuthenticated,
+    loginAdmin,
+    resetPassword,
+  } = useAuth();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -25,8 +32,8 @@ function AdminLogin() {
     return <div className="auth-route-loading">Checking your admin session...</div>;
   }
 
-  if (isAuthenticated) {
-    return <Navigate to={isAdmin ? redirectTarget : "/"} replace />;
+  if (isAuthenticated && isAdmin) {
+    return <Navigate to={redirectTarget} replace />;
   }
 
   const handleChange = (key, value) => {
@@ -90,6 +97,12 @@ function AdminLogin() {
           <h1>Admin Login</h1>
           <p>Sign in with an approved admin account to open the dashboard and manage live website data.</p>
         </div>
+
+        {isAuthenticated && !isAdmin ? (
+          <div className="auth-route-message">
+            You are currently signed in as {currentUser?.email || "a customer"}. Enter an approved admin account below to switch to the admin portal.
+          </div>
+        ) : null}
 
         <form className="auth-route-form" onSubmit={handleSubmit}>
           <div className="auth-field">

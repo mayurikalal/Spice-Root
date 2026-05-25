@@ -53,6 +53,8 @@ During local development, the server accepts Vite origins from `localhost`, `127
 
 Deploy the client to Vercel from the repository root using `vercel.json`.
 
+Direct routes such as `/admin/login` require the included Vercel SPA rewrite. Redeploy after changing `vercel.json` or `client/vercel.json`.
+
 Deploy the server to Render with `server` as the root directory.
 
 Set `VITE_API_URL` in Vercel to your Render API URL:
